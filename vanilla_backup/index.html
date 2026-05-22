@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to Brew & Brush Art Café, a cozy neighborhood space where specialty coffee craft, digital sketching, workshops, and local art galleries blend together.">
+  <title>Brew & Brush | Cozy Art Café & Sketchbook Bar</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Transparent/Scroll-Blur Header -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-palette" style="color: var(--accent-terracotta);"></i> Brew & <span>Brush</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="active" id="link-home">Home</a></li>
+          <li><a href="#about" id="link-about">Story</a></li>
+          <li><a href="#latte-studio" id="link-studio">Latte Studio</a></li>
+          <li><a href="#espresso-bar" id="link-bar">Espresso Bar</a></li>
+          <li><a href="#menu-section" id="link-menu">Menu</a></li>
+          <li><a href="#gallery-section" id="link-gallery">Gallery</a></li>
+          <li><a href="#events" id="link-events">Events</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="hanging-sign">
+          <i class="fa-solid fa-mug-hot"></i> Open Daily
+        </div>
+        <button class="cart-toggle" id="btn-toggle-cart" aria-label="Open tray drawer">
+          <i class="fa-solid fa-basket-shopping"></i> Tray
+          <span class="cart-count" id="cart-item-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-star"></i> Artisan Coffee & Creative Lounge
+        </div>
+        <h1>Brewed for Artists & <span>Dreamers.</span></h1>
+        <p>Welcome to a cozy corner where rich specialty espresso, sketchbooks, warm conversations, and watercolor palettes live together. Grab a cup, pull up an easel, and create.</p>
+        <div class="hero-buttons">
+          <a href="#latte-studio" class="btn-primary"><i class="fa-solid fa-paintbrush"></i> Paint Latte Art</a>
+          <a href="#menu-section" class="btn-secondary">Explore Menu</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Interactive Steam Mug -->
+        <div class="mug-container" id="steam-mug-container">
+          <canvas id="steam-canvas" width="280" height="220" title="Move your mouse around to swirl the warm coffee steam!"></canvas>
+          <div class="mug-handle"></div>
+          <div class="mug-outer">
+            <div class="mug-inner">
+              <div class="coffee-liquid" id="hero-coffee-surface"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="scrapbook-layout">
+      <div class="scrapbook-text">
+        <div class="handwritten"><i class="fa-solid fa-bookmark"></i> Our Story</div>
+        <h2>A Cozy Creative Sanctuary</h2>
+        <p>Brew & Brush started with a simple belief: that a coffee cup and a blank canvas are the perfect companions. We wanted to create a neighborhood shelter for writers sketching thoughts, illustrators painting latte froth, and friends catching up in warm, imperfect corners.</p>
+        
+        <div class="about-features">
+          <div class="about-feature-item">
+            <i class="fa-solid fa-mug-hot"></i>
+            <div>
+              <h4>Ethically Sourced Beans</h4>
+              <p>All our beans are single-origin, roasted in-house daily by expert baristas.</p>
+            </div>
+          </div>
+          <div class="about-feature-item">
+            <i class="fa-solid fa-paintbrush"></i>
+            <div>
+              <h4>Workspace Easels & Paint</h4>
+              <p>Every table is stocked with brushes, sketchpads, and watercolors for your use.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Image Showcase -->
+      <div class="scrapbook-stickers">
+        <div class="about-image-card">
+          <img src="assets/art_cafe_interior.png" alt="Cosy cafe interior inside Brew and Brush">
+          <div class="about-image-caption">
+            <div>
+              <h4>Brew & Brush Studio Lounge</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Open Daily — 7 AM to 9 PM</p>
+            </div>
+            <span class="handwritten" style="font-size: 1.6rem; transform: rotate(-3deg);">Cozy Vibe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Latte Art Studio -->
+  <section class="section" id="latte-studio" style="background: var(--bg-secondary);">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-wand-magic-sparkles"></i> Try it out</div>
+      <h2>Latte Art Studio</h2>
+      <p>Decorate your coffee mug! Choose cream foam, caramel drizzle, or cocoa sprinkle brushes to paint your own designs directly on the cup.</p>
+    </div>
+    
+    <div class="latte-art-grid">
+      <!-- Interactive Mug Canvas -->
+      <div class="canvas-frame-outer">
+        <div class="latte-cup-rim" id="latte-cup-rim">
+          <div class="latte-cup-handle"></div>
+          <canvas id="latte-canvas" width="310" height="310"></canvas>
+        </div>
+      </div>
+
+      <!-- Controls & Tools -->
+      <div class="canvas-tools">
+        <div class="tool-group">
+          <h3>Brush Options</h3>
+          <div class="brush-selector">
+            <button class="brush-btn active" data-brush="cream" id="brush-cream-btn">
+              <div class="color-dot dot-cream"></div> Cream Foam
+            </button>
+            <button class="brush-btn" data-brush="caramel" id="brush-caramel-btn">
+              <div class="color-dot dot-caramel"></div> Caramel Drizzle
+            </button>
+            <button class="brush-btn" data-brush="cocoa" id="brush-cocoa-btn">
+              <div class="color-dot dot-cocoa"></div> Cocoa Powder
+            </button>
+            <button class="brush-btn" data-brush="cinnamon" id="brush-cinnamon-btn">
+              <div class="color-dot dot-cinnamon"></div> Espresso Swirl
+            </button>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Brush Weight</h3>
+            <span id="brush-size-val" style="color: var(--accent-terracotta); font-weight: 700;">12px</span>
+          </div>
+          <input type="range" id="slider-brush-size" min="4" max="40" value="12" style="accent-color: var(--accent-terracotta); width: 100%; cursor: pointer;">
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-action" id="btn-clear-canvas"><i class="fa-solid fa-eraser"></i> Clear Cup</button>
+          <button class="btn-action" id="btn-sip-latte"><i class="fa-solid fa-mug-hot"></i> Take a Sip</button>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-action btn-action-primary" id="btn-save-doodle"><i class="fa-solid fa-signature"></i> Post to Wall</button>
+          <button class="btn-action btn-action-primary" id="btn-download-doodle"><i class="fa-solid fa-download"></i> Save PNG</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Virtual Espresso Bar -->
+  <section class="section" id="espresso-bar">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-beer-mug-empty"></i> Virtual Barista</div>
+      <h2>Mix Your Special Brew</h2>
+      <p>Experiment in our virtual espresso bar. Mix ingredients, watch layers stack in the glass, and order your custom recipe!</p>
+    </div>
+
+    <div class="espresso-bar-layout">
+      <!-- Mix Controls -->
+      <div class="espresso-creator">
+        <div class="creator-steps">
+          <h3>1. Choose Mug Size</h3>
+          <div style="display: flex; gap: 1rem;">
+            <button class="filter-btn active" id="btn-size-s" data-size="S" style="flex: 1;">8 oz (S)</button>
+            <button class="filter-btn" id="btn-size-m" data-size="M" style="flex: 1;">12 oz (M)</button>
+            <button class="filter-btn" id="btn-size-l" data-size="L" style="flex: 1;">16 oz (L)</button>
+          </div>
+        </div>
+
+        <div class="creator-steps">
+          <h3>2. Layer Ingredients</h3>
+          <div class="ingredient-grid">
+            <div class="ingredient-card" data-ingredient="espresso" id="card-ing-espresso">
+              <span class="ingredient-icon">☕</span>
+              <span>Espresso</span>
+            </div>
+            <div class="ingredient-card" data-ingredient="milk" id="card-ing-milk">
+              <span class="ingredient-icon">🥛</span>
+              <span>Steamed Milk</span>
+            </div>
+            <div class="ingredient-card" data-ingredient="water" id="card-ing-water">
+              <span class="ingredient-icon">💧</span>
+              <span>Hot Water</span>
+            </div>
+            <div class="ingredient-card" data-ingredient="caramel" id="card-ing-caramel">
+              <span class="ingredient-icon">🍯</span>
+              <span>Caramel Sauce</span>
+            </div>
+            <div class="ingredient-card" data-ingredient="foam" id="card-ing-foam">
+              <span class="ingredient-icon">☁️</span>
+              <span>Milk Foam</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="creator-steps">
+          <h3>3. Topping Drizzle</h3>
+          <div style="display: flex; gap: 1rem;">
+            <button class="brush-btn" id="btn-topping-cinnamon" data-topping="cinnamon" style="flex: 1; justify-content: center;">🍫 Cocoa Shavings</button>
+            <button class="brush-btn" id="btn-topping-sprinkles" data-topping="sprinkles" style="flex: 1; justify-content: center;">✨ Gold Cinnamon</button>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button class="btn-action" id="btn-reset-drink" style="flex: 0.4;"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+          <button class="btn-primary" id="btn-add-drink-cart" style="flex: 1; justify-content: center; padding: 0.9rem;"><i class="fa-solid fa-cart-plus"></i> Add to Tray ($5.50)</button>
+        </div>
+      </div>
+
+      <!-- Live Cup Visual -->
+      <div class="espresso-viewer">
+        <div class="glass-cup-holder">
+          <div class="glass-cup-handle"></div>
+          <div class="glass-cup" id="glass-cup-cup">
+            <div class="liquid-contents" id="cup-liquid-layers"></div>
+          </div>
+          <div class="topping-visuals">
+            <div class="topping-item" id="topping-chocolate-item" style="left: 20px;">🍫</div>
+            <div class="topping-item" id="topping-cinnamon-item" style="left: 50px;">✨</div>
+            <div class="topping-item" id="topping-sprinkle-item" style="left: 80px;">✨</div>
+            <div class="topping-item" id="topping-cocoa-item" style="left: 100px;">🍫</div>
+          </div>
+        </div>
+
+        <div class="drink-summary-card">
+          <h4 id="drink-summary-name">Custom Blend</h4>
+          <p id="drink-summary-recipe" style="font-size: 0.9rem; color: var(--text-secondary);">Empty mug. Add ingredients to customize.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Menu Section -->
+  <section class="section" id="menu-section">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-receipt"></i> Curated Items</div>
+      <h2>Workspace Menu</h2>
+      <p>Sip, eat, or paint. We serve artisan roast coffees, floral teas, sweet treats, and paintkits directly to your café workspace.</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="menu-controls">
+      <button class="filter-btn active" data-filter="all" id="filter-all-btn">All Items</button>
+      <button class="filter-btn" data-filter="coffee" id="filter-coffee-btn">Artisan Coffee</button>
+      <button class="filter-btn" data-filter="tea" id="filter-tea-btn">Specialty Tea</button>
+      <button class="filter-btn" data-filter="bakery" id="filter-bakery-btn">Bakery Treats</button>
+      <button class="filter-btn" data-filter="art" id="filter-art-btn">Art Kits</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="menu-grid" id="menu-items-grid">
+      <!-- Generated dynamically in app.js -->
+    </div>
+  </section>
+
+  <!-- Art Gallery -->
+  <section class="section" id="gallery-section" style="background: var(--bg-secondary);">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-palette"></i> Gallery Wall</div>
+      <h2>Cozy Studio Work</h2>
+      <p>Featured canvases painted inside the cafe by our visitors and resident artists. Click any frame to zoom in.</p>
+    </div>
+
+    <div class="gallery-layout">
+      <!-- Polaroids Grid -->
+      <div class="gallery-wall" id="gallery-grid">
+        <div class="art-polaroid" data-title="Sunday Morning" data-author="Lily M." data-src="assets/art_cafe_interior.png">
+          <img src="assets/art_cafe_interior.png" alt="Aesthetic Art Cafe interior">
+          <div class="art-polaroid-caption">"Sunday Morning" — Lily M.</div>
+        </div>
+        
+        <div class="art-polaroid" data-title="Aroma Study" data-author="Marcus V." data-src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600" alt="Watercolor abstract art painting">
+          <div class="art-polaroid-caption">"Aroma Study" — Marcus V.</div>
+        </div>
+
+        <div class="art-polaroid" data-title="Palette & Pitcher" data-author="Sophie K." data-src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&q=80&w=600">
+          <img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&q=80&w=600" alt="Artist paint brushes and watercolor palette">
+          <div class="art-polaroid-caption">"Palette & Pitcher" — Sophie K.</div>
+        </div>
+
+        <div class="art-polaroid" data-title="Steam Reflections" data-author="Chloe D." data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=600">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=600" alt="Modern liquid texture painting">
+          <div class="art-polaroid-caption">"Steam Reflections" — Chloe D.</div>
+        </div>
+      </div>
+
+      <!-- Guestbook Board -->
+      <div class="guestbook">
+        <h3 style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span>Sketchbook Board</span>
+          <span class="handwritten" style="font-size:1.1rem; color: var(--accent-gold);">share your creation</span>
+        </h3>
+        
+        <!-- Messages Board -->
+        <div class="doodle-wall" id="guestbook-messages">
+          <div class="guest-note">
+            <div class="guest-note-header">
+              <span>☕ Emma Rose</span>
+              <span>10 mins ago</span>
+            </div>
+            <div class="guest-note-body">
+              This is the coziest virtual spot! Loved customizing my rose coffee.
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Doodle Form -->
+        <form class="guestbook-form" id="form-guestbook" onsubmit="return false;">
+          <input type="text" id="guest-name" class="guestbook-input" placeholder="Your Name" required>
+          <input type="text" id="guest-message" class="guestbook-input" placeholder="Leave a sweet note..." required>
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+            <input type="checkbox" id="attach-doodle-chk" style="accent-color: var(--accent-terracotta); cursor: pointer;">
+            <label for="attach-doodle-chk" style="cursor: pointer; font-weight: 600;">Attach my Latte Art doodle</label>
+          </div>
+          <button type="submit" class="guestbook-submit">Sign & Post Cup</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-calendar-days"></i> Join Us</div>
+      <h2>Workshops & Meetups</h2>
+      <p>We regularly host creative meetups. Hover over each card to view details, then RSVP to save your workspace seat!</p>
+    </div>
+
+    <div class="events-grid">
+      <!-- Event 1: Painting Workshop -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="event-date">May 26</div>
+            <div class="event-title">Watercolor & Latte Pouring</div>
+            <div class="event-time"><i class="fa-regular fa-clock"></i> 4:00 PM - 6:00 PM</div>
+          </div>
+          <div class="flip-card-back">
+            <h4>Event Details</h4>
+            <p>Learn basic watercolor blending while sipping fresh roasts. Paints and paper panels are provided on us.</p>
+            <button class="btn-primary rsvp-btn" data-event="Watercolor Workshop" style="padding: 0.5rem; font-size: 0.85rem; width: 100%; justify-content: center;">RSVP Seat</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 2: Poetry Night -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="event-date">May 29</div>
+            <div class="event-title">Poetry & Acoustic Lounge</div>
+            <div class="event-time"><i class="fa-regular fa-clock"></i> 7:30 PM - 9:30 PM</div>
+          </div>
+          <div class="flip-card-back">
+            <h4>Event Details</h4>
+            <p>A candlelit evening of open mic poetry, local journal readings, and acoustic guitar background loops.</p>
+            <button class="btn-primary rsvp-btn" data-event="Poetry Night" style="padding: 0.5rem; font-size: 0.85rem; width: 100%; justify-content: center;">RSVP Seat</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 3: Jazz Evening -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="event-date">June 02</div>
+            <div class="event-title">Live Classic Jazz Trio</div>
+            <div class="event-time"><i class="fa-regular fa-clock"></i> 6:00 PM - 9:00 PM</div>
+          </div>
+          <div class="flip-card-back">
+            <h4>Event Details</h4>
+            <p>Double bass, piano, and sax playing jazz tracks while you sketch on table napkins or study.</p>
+            <button class="btn-primary rsvp-btn" data-event="Jazz Trio" style="padding: 0.5rem; font-size: 0.85rem; width: 100%; justify-content: center;">RSVP Seat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cozy Stories Open Sketchbook & Testimonials -->
+  <section class="section" id="stories" style="background: var(--bg-secondary);">
+    <div class="section-header">
+      <div class="handwritten"><i class="fa-solid fa-book-open"></i> Reflections</div>
+      <h2>Sketchbook Reflections</h2>
+      <p>Stories, notes, and testimonials written by visitors at our window-side bars.</p>
+    </div>
+
+    <!-- open sketchbook details -->
+    <div class="open-sketchbook">
+      <div class="sketchbook-spine"></div>
+      
+      <!-- Left Page: Cafe poem -->
+      <div class="sketchbook-page page-left">
+        <div class="poem-box">
+          A coffee cup, a blank white page,<br>
+          Where colors play and lines engage.<br>
+          Warm shadows float, the steam climbs high,<br>
+          A cozy space for you and I.<br>
+          We sketch the dreams we left behind,<br>
+          And seek the peace we hoped to find.<br>
+          With brush and bean, we sit and stay,<br>
+          And watch the quiet fade away.
+        </div>
+        <div class="handwritten" style="text-align: right; margin-top: 1.5rem;">— written by a dreamer</div>
+      </div>
+
+      <!-- Right Page: Testimonials Slide-out -->
+      <div class="sketchbook-page page-right">
+        <div class="testimonial-carousel">
+          <button class="carousel-nav-btn carousel-prev" id="btn-prev-test" aria-label="Previous quote"><i class="fa-solid fa-chevron-left"></i></button>
+          
+          <div class="testimonial-container">
+            <div class="testimonial-slide active">
+              <div class="testimonial-quote">"This is hands-down my favorite place in the city to clear my head. I grab a sea-salt latte, fetch watercolors, and sit for hours."</div>
+              <div class="testimonial-author">— Arthur Pendelton</div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-quote">"Brew & Brush is an absolute dream. The events are warm, friendly, and you get to paint directly on paper towels if you run out of canvas!"</div>
+              <div class="testimonial-author">— Clara Montgomery</div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-quote">"A perfect blend of cozy café and inspiring artist colony. The virtual custom drink builder matches their physical cups perfectly!"</div>
+              <div class="testimonial-author">— Liam K.</div>
+            </div>
+          </div>
+
+          <button class="carousel-nav-btn carousel-next" id="btn-next-test" aria-label="Next quote"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Tray Drawer Overlay -->
+  <div class="cart-drawer" id="cart-drawer-panel">
+    <div class="cart-header">
+      <h3>Serving Tray</h3>
+      <button class="btn-close-cart" id="btn-close-cart" aria-label="Close tray">&times;</button>
+    </div>
+    
+    <div class="cart-items" id="cart-items-list">
+      <!-- Injected by app.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Tray Total</span>
+        <span id="cart-subtotal-val">$0.00</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout-drawer">Order from Table</button>
+    </div>
+  </div>
+
+  <!-- Zoom Polaroid Modal -->
+  <div class="modal" id="image-modal">
+    <div class="modal-content" id="modal-content-area">
+      <button class="btn-close-modal" id="btn-close-modal-x">&times;</button>
+      <div id="modal-media-holder"></div>
+      <div class="art-polaroid-caption" id="modal-caption-text">Title</div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); text-transform: none; margin-bottom: 1rem;"><i class="fa-solid fa-palette" style="color: var(--accent-terracotta);"></i> Brew & Brush</h4>
+        <p>A neighborhood space where specialty coffee craft and art workspaces blend together. Grab a cup, grab a brush, and start creating.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Opening Hours</h4>
+        <p style="margin-bottom: 0.5rem;"><strong>Mon - Fri:</strong> 7:00 AM - 8:00 PM</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Sat - Sun:</strong> 8:00 AM - 9:00 PM</p>
+        <p style="color: var(--accent-terracotta); font-weight: 700; font-family: var(--font-hand); font-size:1.3rem; margin-top: 1rem;">Jazz Sketches: Daily 4PM - 6PM</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Explore</h4>
+        <ul>
+          <li><a href="#about">Story & Vibe</a></li>
+          <li><a href="#latte-studio">Latte Art Studio</a></li>
+          <li><a href="#menu-section">Workspace Menu</a></li>
+          <li><a href="#events">Upcoming Tickets</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Weekly Journal</h4>
+        <p>Receive recipes, event updates, and creative writing prompts directly in your inbox.</p>
+        <form class="newsletter-form" onsubmit="alert('Thank you for subscribing to our weekly journal!'); return false;">
+          <input type="email" placeholder="dreamer@email.com" class="newsletter-input" required aria-label="Email address">
+          <button type="submit" class="newsletter-submit">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Brew & Brush Art Café. Made with love for artists & dreamers.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/steam-particle.js"></script>
+  <script src="js/canvas-paint.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
