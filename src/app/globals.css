@@ -182,14 +182,14 @@ header.scrolled {
   align-items: center;
   gap: 0.4rem;
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.1);
+  border: 2px solid var(--text-primary);
   padding: 0.4rem 0.9rem;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   font-family: var(--font-hand);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 3px 3px 0 var(--text-primary);
   transform-origin: top center;
   animation: swing-sign 4s ease-in-out infinite alternate;
   user-select: none;
@@ -202,24 +202,26 @@ header.scrolled {
 
 /* Cart Button */
 .cart-toggle {
-  background: var(--text-primary);
-  border: none;
-  color: var(--bg-primary);
+  background: var(--card-white);
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
   padding: 0.6rem 1.2rem;
   border-radius: 30px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
+  box-shadow: 3px 3px 0 var(--text-primary);
   transition: var(--transition-smooth);
 }
 
 .cart-toggle:hover {
-  background: var(--accent-terracotta);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(200, 107, 81, 0.3);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--text-primary);
 }
 
 .cart-count {
@@ -262,14 +264,15 @@ header.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(200, 107, 81, 0.08);
+  background: transparent;
   color: var(--accent-terracotta);
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
+  padding: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0px;
   margin-bottom: 1.5rem;
 }
 
@@ -282,7 +285,13 @@ header.scrolled {
 
 .hero-content h1 span {
   color: var(--accent-terracotta);
-  position: relative;
+  font-family: var(--font-hand);
+  font-size: 5.2rem;
+  font-weight: 700;
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-left: 0.5rem;
+  line-height: 0.9;
 }
 
 .hero-content p {
@@ -300,8 +309,8 @@ header.scrolled {
 
 .btn-primary, .btn-secondary {
   padding: 1rem 2.2rem;
-  border-radius: 50px;
-  font-weight: 600;
+  border-radius: 6px;
+  font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -309,29 +318,42 @@ header.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  border: 2px solid var(--text-primary);
 }
 
 .btn-primary {
   background: var(--accent-terracotta);
-  color: var(--bg-primary);
-  border: none;
+  color: #FFFDF9;
+  box-shadow: 4px 4px 0 var(--text-primary);
 }
 
 .btn-primary:hover {
-  background: var(--text-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(42, 26, 20, 0.15);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--text-primary);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--text-primary);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: #FFFDF9;
   color: var(--text-primary);
-  border: 1.5px solid var(--text-primary);
+  box-shadow: 4px 4px 0 var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: rgba(42, 26, 20, 0.04);
-  transform: translateY(-2px);
+  background: var(--bg-secondary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--text-primary);
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--text-primary);
 }
 
 /* Mug and Steam Graphics */
@@ -366,11 +388,11 @@ header.scrolled {
   width: 240px;
   height: 180px;
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.08);
+  border: 3.5px solid var(--text-primary);
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
   z-index: 2;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 6px 6px 0 var(--text-primary);
 }
 
 .mug-inner {
@@ -398,17 +420,15 @@ header.scrolled {
 
 .mug-handle {
   position: absolute;
-  top: 50px;
-  right: 15px;
-  width: 55px;
-  height: 90px;
-  border: 15px solid var(--card-white);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
+  top: 40px;
+  right: 10px;
+  width: 80px;
+  height: 110px;
+  border: 3.5px solid var(--text-primary);
+  background: var(--card-white);
   border-radius: 50%;
-  transform: rotate(35deg);
   z-index: 1;
-  box-shadow: 5px -5px 15px rgba(42, 26, 20, 0.04);
+  box-shadow: 4px 4px 0 var(--text-primary);
 }
 
 /* Sections Configuration */
@@ -918,19 +938,19 @@ header.scrolled {
 
 .recipe-card {
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.05);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
   padding: 1.8rem;
   position: relative;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 4px 4px 0 var(--text-primary);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--text-primary);
 }
 
 .recipe-header {
@@ -1727,19 +1747,17 @@ footer {
 }
 .team-card {
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.05);
-  border-radius: var(--radius-md);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--text-primary);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow: hidden;
 }
 .team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--text-primary);
 }
 .team-avatar {
   width: 120px;
@@ -1803,15 +1821,15 @@ footer {
 }
 .job-card {
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.05);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
   padding: 2rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 4px 4px 0 var(--text-primary);
   transition: var(--transition-smooth);
 }
 .job-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--text-primary);
 }
 .job-header {
   display: flex;
@@ -1909,10 +1927,10 @@ footer {
 }
 .info-card {
   background: var(--card-white);
-  border: 1px solid rgba(42, 26, 20, 0.05);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
   padding: 1.8rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 4px 4px 0 var(--text-primary);
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;

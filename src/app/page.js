@@ -101,6 +101,29 @@ const testimonials = [
   { quote: "A perfect blend of cozy café and inspiring artist colony. The virtual custom drink builder matches their physical cups perfectly!", author: "Liam K." }
 ];
 
+const StarDoodle = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', pointerEvents: 'none', zIndex: 1, ...style }}>
+    <path d="M12 2L14.8 8.6L22 9.2L16.5 13.8L18.3 20.8L12 17.1L5.7 20.8L7.5 13.8L2 9.2L9.2 8.6L12 2Z" fill="var(--accent-gold)" stroke="var(--text-primary)" strokeWidth="1.8" strokeLinejoin="round" />
+  </svg>
+);
+
+const PencilDoodle = ({ style }) => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', pointerEvents: 'none', zIndex: 1, opacity: 0.8, ...style }}>
+    <path d="M17 3L21 7L7.5 20.5H3.5V16.5L17 3Z" fill="var(--bg-secondary)" stroke="var(--text-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 5L19 9" stroke="var(--text-primary)" strokeWidth="1.8" />
+  </svg>
+);
+
+const CupDoodle = ({ style }) => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', pointerEvents: 'none', zIndex: 1, opacity: 0.8, ...style }}>
+    <path d="M3 10H17V17C17 19.2 15.2 21 13 21H7C4.8 21 3 19.2 3 17V10Z" fill="var(--bg-secondary)" stroke="var(--text-primary)" strokeWidth="1.8" />
+    <path d="M17 12C18.7 12 20 13.3 20 15C20 16.7 18.7 18 17 18" stroke="var(--text-primary)" strokeWidth="1.8" />
+    <path d="M7 6C7 5 8 4.5 8 4" stroke="var(--text-primary)" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M10 6C10 5 11 4.5 11 4" stroke="var(--text-primary)" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M13 6C13 5 14 4.5 14 4" stroke="var(--text-primary)" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 export default function Home() {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState('all');
@@ -191,27 +214,53 @@ export default function Home() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            style={{ position: 'relative' }}
           >
-            <div className="hero-badge">
-              <Star style={{ width: '12px', height: '12px', fill: 'var(--text-primary)', color: 'var(--text-primary)' }} />
-              Artisan Coffee & Creative Lounge
+            {/* Custom Coffee Stamp */}
+            <div className="hero-stamp" style={{ opacity: 0.8, marginBottom: '1.2rem', display: 'inline-block', transform: 'rotate(-8deg)' }}>
+              <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30" stroke="var(--text-primary)" strokeWidth="1.8" strokeDasharray="4 2" />
+                <circle cx="32" cy="32" r="25" stroke="var(--text-primary)" strokeWidth="1.2" />
+                <path d="M24 36H40V30C40 25.58 36.42 22 32 22C27.58 22 24 25.58 24 30V36Z" fill="var(--bg-secondary)" stroke="var(--text-primary)" strokeWidth="1.8" />
+                <path d="M40 26C42.2 26 44 27.8 44 30C44 32.2 42.2 34 40 34" stroke="var(--text-primary)" strokeWidth="1.8" />
+                <path d="M20 40H44" stroke="var(--text-primary)" strokeWidth="2.5" />
+                <path d="M28 17C28 15.5 29 15 29 14" stroke="var(--text-primary)" strokeWidth="1.2" strokeLinecap="round" />
+                <path d="M32 17C32 15.5 33 15 33 14" stroke="var(--text-primary)" strokeWidth="1.2" strokeLinecap="round" />
+                <path d="M36 17C36 15.5 37 15 37 14" stroke="var(--text-primary)" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
             </div>
-            <h1>Brewed for Artists & <span>Dreamers.</span></h1>
+
+            <div className="hero-badge">
+              ☕ Brew & Brush Space
+            </div>
+            
+            <h1 style={{ position: 'relative' }}>
+              Brewed for Artists & <span>Dreamers.</span>
+            </h1>
+            
             <p>Welcome to a cozy corner where rich specialty espresso, sketchbooks, warm conversations, and watercolor palettes live together. Grab a cup, pull up an easel, and create.</p>
+            
             <div className="hero-buttons">
               <a href="#latte-studio" className="btn-primary">
                 <Paintbrush style={{ width: '16px', height: '16px' }} /> Paint Latte Art
               </a>
               <a href="#menu-section" className="btn-secondary">Explore Menu</a>
             </div>
+
+            <StarDoodle style={{ top: '160px', left: '-50px', transform: 'rotate(-15deg)' }} />
           </motion.div>
+
           <motion.div 
             className="hero-visual"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ position: 'relative' }}
           >
             <SteamMug />
+            <StarDoodle style={{ top: '-10px', right: '20px', transform: 'rotate(15deg) scale(1.1)' }} />
+            <CupDoodle style={{ bottom: '25px', right: '-45px', transform: 'rotate(15deg) scale(1.1)' }} />
+            <PencilDoodle style={{ bottom: '15px', left: '-30px', transform: 'rotate(-30deg) scale(1.1)' }} />
           </motion.div>
         </div>
       </section>

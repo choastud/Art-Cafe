@@ -39,7 +39,11 @@ export default function Header() {
       <header className={scrolled ? 'scrolled' : ''}>
         <div className="nav-container">
           <Link href="/" className="logo">
-            <Palette style={{ color: 'var(--accent-terracotta)', width: '24px', height: '24px' }} />
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(-25deg)', marginRight: '2px' }}>
+              <path d="M21 3C21 3 16 4 12 8C8 12 7 17 7 17C7 17 12 16 16 12C20 8 21 3 21 3Z" fill="var(--accent-terracotta)" stroke="var(--text-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M3 21C3 21 9 20 12 17" stroke="var(--text-primary)" strokeWidth="1.8" strokeLinecap="round" />
+              <path d="M12 8C13.5 10.5 15.5 12.5 18 14" stroke="var(--text-primary)" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
             Brew & <span>Brush</span>
           </Link>
 
