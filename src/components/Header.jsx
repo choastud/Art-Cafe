@@ -30,6 +30,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'Story', path: '/about' },
     { name: 'Team', path: '/team' },
+    { name: 'Dashboard', path: '/dashboard' },
     { name: 'Hiring', path: '/hiring' },
     { name: 'Collaborations', path: '/contact' },
   ];

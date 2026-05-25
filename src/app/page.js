@@ -154,7 +154,16 @@ export default function Home() {
     // Sync guestbook updates from LatteStudio
     const handleSync = () => loadGuestbook();
     window.addEventListener('guestbook-updated', handleSync);
-    return () => window.removeEventListener('guestbook-updated', handleSync);
+
+    // Load RSVP states
+    const savedStates = localStorage.getItem('brew_brush_rsvp_states');
+    if (savedStates) {
+      setRsvpStates(JSON.parse(savedStates));
+    }
+
+    return () => {
+      window.removeEventListener('guestbook-updated', handleSync);
+    };
   }, []);
 
   const handleGuestbookSubmit = (e) => {
@@ -178,13 +187,34 @@ export default function Home() {
     setGuestMsg('');
   };
 
-  const handleRsvp = (eventKey, eventTitle) => {
+  const handleRsvp = (eventKey, eventTitle, eventDate, eventTime) => {
     if (rsvpStates[eventKey]) return;
+    
+    // 1. Alert user
     alert(`🎟️ Workspace Reserved! We've saved you a ticket for the "${eventTitle}" event. See you there!`);
-    setRsvpStates(prev => ({
-      ...prev,
-      [eventKey]: true
-    }));
+    
+    // 2. Set State
+    const updatedStates = { ...rsvpStates, [eventKey]: true };
+    setRsvpStates(updatedStates);
+    localStorage.setItem('brew_brush_rsvp_states', JSON.stringify(updatedStates));
+
+    // 3. Save Ticket to localStorage
+    const newTicket = {
+      id: eventKey,
+      title: eventTitle,
+      date: eventDate,
+      time: eventTime,
+      seat: `Easel #${Math.floor(Math.random() * 20) + 1}`
+    };
+    
+    let savedRsvps = localStorage.getItem('brew_brush_rsvps');
+    savedRsvps = savedRsvps ? JSON.parse(savedRsvps) : [];
+    
+    // Avoid duplicates
+    if (!savedRsvps.find(t => t.id === eventKey)) {
+      savedRsvps.push(newTicket);
+      localStorage.setItem('brew_brush_rsvps', JSON.stringify(savedRsvps));
+    }
   };
 
   const nextTestimonial = () => {
@@ -572,7 +602,7 @@ export default function Home() {
                     cursor: rsvpStates['e1'] ? 'default' : 'pointer'
                   }}
                   disabled={rsvpStates['e1']}
-                  onClick={() => handleRsvp('e1', 'Watercolor & Latte Pouring')}
+                  onClick={() => handleRsvp('e1', 'Watercolor & Latte Pouring', 'May 26', '4:00 PM - 6:00 PM')}
                 >
                   {rsvpStates['e1'] ? 'Seat Saved!' : 'RSVP Seat'}
                 </button>
@@ -603,7 +633,7 @@ export default function Home() {
                     cursor: rsvpStates['e2'] ? 'default' : 'pointer'
                   }}
                   disabled={rsvpStates['e2']}
-                  onClick={() => handleRsvp('e2', 'Poetry & Acoustic Lounge')}
+                  onClick={() => handleRsvp('e2', 'Poetry & Acoustic Lounge', 'May 29', '7:30 PM - 9:30 PM')}
                 >
                   {rsvpStates['e2'] ? 'Seat Saved!' : 'RSVP Seat'}
                 </button>
@@ -634,7 +664,7 @@ export default function Home() {
                     cursor: rsvpStates['e3'] ? 'default' : 'pointer'
                   }}
                   disabled={rsvpStates['e3']}
-                  onClick={() => handleRsvp('e3', 'Live Classic Jazz Trio')}
+                  onClick={() => handleRsvp('e3', 'Live Classic Jazz Trio', 'June 02', '6:00 PM - 9:00 PM')}
                 >
                   {rsvpStates['e3'] ? 'Seat Saved!' : 'RSVP Seat'}
                 </button>

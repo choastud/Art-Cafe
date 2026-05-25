@@ -123,6 +123,28 @@ export default function EspressoBar() {
     { key: 'foam', label: 'Milk Foam', icon: '☁️' }
   ];
 
+  const handleSaveRecipe = () => {
+    if (totalPercentage === 0) return;
+    const oz = size === 'S' ? '8 oz' : size === 'M' ? '12 oz' : '16 oz';
+    const drinkName = getDrinkName();
+    const recipeDesc = getRecipeDescription();
+    const price = getPrice();
+
+    const newRecipe = {
+      id: `r-${Date.now()}`,
+      name: drinkName,
+      size: oz,
+      desc: recipeDesc,
+      price: price
+    };
+
+    let saved = localStorage.getItem('brew_brush_custom_recipes');
+    saved = saved ? JSON.parse(saved) : [];
+    saved.push(newRecipe);
+    localStorage.setItem('brew_brush_custom_recipes', JSON.stringify(saved));
+    alert(`🧡 "${oz} ${drinkName}" saved to your custom recipes! You can view and manage it on your Studio Dashboard.`);
+  };
+
   return (
     <div className="espresso-bar-layout">
       {/* Mix Controls */}
@@ -198,25 +220,39 @@ export default function EspressoBar() {
         </div>
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-          <button className="btn-action" onClick={handleReset} style={{ flex: 0.4 }}>
-            <RotateCcw style={{ width: '16px', height: '16px', marginRight: '4px' }} /> Reset
+          <button className="btn-action" onClick={handleReset} style={{ flex: 1 }}>
+            <RotateCcw style={{ width: '15px', height: '15px', marginRight: '6px' }} /> Reset
           </button>
           <button
-            className="btn-primary"
-            onClick={handleAddDrink}
+            className="btn-action"
+            onClick={handleSaveRecipe}
             disabled={totalPercentage === 0}
             style={{
               flex: 1,
-              justifyContent: 'center',
-              padding: '0.9rem',
               opacity: totalPercentage === 0 ? 0.5 : 1,
               cursor: totalPercentage === 0 ? 'not-allowed' : 'pointer'
             }}
           >
-            <Plus style={{ width: '16px', height: '16px', marginRight: '6px' }} />
-            Add to Tray (${getPrice().toFixed(2)})
+            🧡 Save Recipe
           </button>
         </div>
+        
+        <button
+          className="btn-primary"
+          onClick={handleAddDrink}
+          disabled={totalPercentage === 0}
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            padding: '1rem',
+            marginTop: '0.8rem',
+            opacity: totalPercentage === 0 ? 0.5 : 1,
+            cursor: totalPercentage === 0 ? 'not-allowed' : 'pointer'
+          }}
+        >
+          <Plus style={{ width: '16px', height: '16px', marginRight: '6px' }} />
+          Add to Tray (${getPrice().toFixed(2)})
+        </button>
       </div>
 
       {/* Live Cup Visual */}
