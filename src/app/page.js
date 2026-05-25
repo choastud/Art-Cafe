@@ -177,7 +177,12 @@ export default function Home() {
     : menuItems.filter(item => item.category === filter);
 
   return (
-    <main>
+    <main style={{ position: 'relative' }}>
+      {/* Decorative background coffee rings */}
+      <div className="coffee-ring" style={{ top: '15%', left: '-80px', transform: 'scale(1.1) rotate(15deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '48%', right: '-100px', transform: 'scale(0.9) rotate(-35deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '78%', left: '-120px', transform: 'scale(1.2) rotate(45deg)' }}></div>
+
       {/* Hero Section */}
       <section className="hero" id="home">
         <div className="hero-container">
@@ -285,11 +290,72 @@ export default function Home() {
       </section>
 
       {/* Featured Menu Section */}
-      <section className="section" id="menu-section">
+      <section className="section" id="menu-section" style={{ position: 'relative' }}>
         <div className="section-header">
           <div className="handwritten">Curated Items</div>
           <h2>Workspace Menu</h2>
           <p>Sip, eat, or paint. We serve artisan roast coffees, floral teas, sweet treats, and paintkits directly to your café workspace.</p>
+        </div>
+
+        {/* Special Coffee Tasting Card (Barista Pick) */}
+        <div style={{
+          background: 'var(--bg-secondary)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '2.5rem',
+          marginBottom: '4rem',
+          border: '1px dashed rgba(111, 78, 55, 0.2)',
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr',
+          gap: '3rem',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 5
+        }} className="barista-pick-card">
+          <div style={{
+            position: 'relative',
+            width: '180px',
+            height: '240px',
+            borderRadius: 'var(--radius-md)',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow-md)'
+          }}>
+            <Image
+              src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400"
+              alt="Specialty Single Origin Bean"
+              fill
+              sizes="180px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div>
+            <span className="handwritten" style={{ fontSize: '1.2rem', color: 'var(--accent-terracotta)', display: 'block', marginBottom: '0.4rem' }}>Barista's Roast Choice</span>
+            <h3 style={{ fontSize: '2.2rem', fontFamily: 'var(--font-serif)', color: 'var(--text-primary)', marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
+              ☕ Araku Honey-Processed Single Origin
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '1.05rem', lineHeight: '1.6' }}>
+              Roasted fresh in-house by Hema Sree. This medium-dark honey-processed micro-lot offers an incredibly sweet cup with hazelnut aromatics and a velvety dark cocoa body.
+            </p>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '1.5rem',
+              borderTop: '1px solid rgba(111, 78, 55, 0.15)',
+              paddingTop: '1.2rem'
+            }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '0.5px' }}>Origin</span>
+                <p style={{ margin: 0, fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-primary)' }}>Araku Valley, India</p>
+              </div>
+              <div>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '0.5px' }}>Taste Notes</span>
+                <p style={{ margin: 0, fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-primary)' }}>Plum, Honey, Hazelnut</p>
+              </div>
+              <div>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '0.5px' }}>Roast Profile</span>
+                <p style={{ margin: 0, fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-primary)' }}>Medium Roast (City+)</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Category Filters */}
@@ -309,6 +375,23 @@ export default function Home() {
         <div className="menu-grid">
           {filteredMenuItems.map((item) => (
             <div className="recipe-card" key={item.id}>
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                height: '190px',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                marginBottom: '1.2rem',
+                border: '1px solid rgba(42, 26, 20, 0.04)'
+              }}>
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className="recipe-header">
                 <h3 className="recipe-title">{item.name}</h3>
                 <span className="recipe-price">${item.price.toFixed(2)}</span>

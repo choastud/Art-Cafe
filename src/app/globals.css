@@ -8,7 +8,7 @@
   --text-secondary: #5E4E42;   /* Muted Coffee Brown */
   --accent-terracotta: #C86B51;/* Ceramic Terracotta */
   --accent-gold: #A88C6C;      /* Roasted Latte Gold */
-  --card-white: #FFFFFF;       /* Clean Card Background */
+  --card-white: #FFFDF9;       /* Warm Cozy Paper Card */
   
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Outfit', sans-serif;
@@ -547,10 +547,12 @@ header.scrolled {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #EAE5DE 0%, #DCD7CF 100%);
+  background: #4E3629; /* Dark Cocoa Wood Tabletop */
+  background-image: repeating-linear-gradient(0deg, #4E3629, #4E3629 40px, #452F24 40px, #452F24 80px);
+  border: 12px solid #2A1A14; /* Espresso Wood Frame */
   padding: 4rem;
   border-radius: var(--radius-lg);
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 35px rgba(0,0,0,0.4), var(--shadow-lg);
   position: relative;
 }
 
@@ -777,9 +779,12 @@ header.scrolled {
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  background: radial-gradient(circle, #EAE5DE 0%, #DCD7CF 100%);
+  background: #4E3629; /* Dark Cocoa Wood Tabletop */
+  background-image: repeating-linear-gradient(0deg, #4E3629, #4E3629 40px, #452F24 40px, #452F24 80px);
+  border: 12px solid #2A1A14; /* Espresso Wood Frame */
   padding: 3rem;
   border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 35px rgba(0,0,0,0.4), var(--shadow-lg);
 }
 
 .glass-cup-holder {
@@ -2057,3 +2062,31 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Decorative coffee stain ring */
+.coffee-ring {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px dashed rgba(111, 78, 55, 0.03);
+  border-left-color: rgba(111, 78, 55, 0.06);
+  border-bottom-color: rgba(111, 78, 55, 0.04);
+  filter: blur(1.5px);
+  pointer-events: none;
+  z-index: -1;
+  transform: rotate(-25deg);
+}
+
+.coffee-ring::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(111, 78, 55, 0.02);
+  filter: blur(2px);
+}
+

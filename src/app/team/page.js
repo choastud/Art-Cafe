@@ -37,7 +37,11 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <main style={{ paddingBottom: '6rem' }}>
+    <main style={{ paddingBottom: '6rem', position: 'relative' }}>
+      {/* Decorative background coffee rings */}
+      <div className="coffee-ring" style={{ top: '8%', right: '-80px', transform: 'scale(1.1) rotate(-15deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '60%', left: '-100px', transform: 'scale(1.0) rotate(35deg)' }}></div>
+
       {/* Header */}
       <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

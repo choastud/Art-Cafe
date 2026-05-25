@@ -54,7 +54,11 @@ export default function Hiring() {
   };
 
   return (
-    <main style={{ paddingBottom: '6rem' }}>
+    <main style={{ paddingBottom: '6rem', position: 'relative' }}>
+      {/* Decorative background coffee rings */}
+      <div className="coffee-ring" style={{ top: '12%', left: '-80px', transform: 'scale(1.1) rotate(20deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '65%', right: '-100px', transform: 'scale(1.0) rotate(-40deg)' }}></div>
+
       {/* Header */}
       <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

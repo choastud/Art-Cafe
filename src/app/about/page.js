@@ -7,7 +7,11 @@ import { Coffee, Flame, Heart, Sparkles, MapPin } from 'lucide-react';
 
 export default function About() {
   return (
-    <main style={{ paddingBottom: '5rem' }}>
+    <main style={{ paddingBottom: '5rem', position: 'relative' }}>
+      {/* Decorative background coffee rings */}
+      <div className="coffee-ring" style={{ top: '10%', left: '-80px', transform: 'scale(1.1) rotate(15deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '55%', right: '-100px', transform: 'scale(1.0) rotate(-25deg)' }}></div>
+
       {/* Editorial Header */}
       <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

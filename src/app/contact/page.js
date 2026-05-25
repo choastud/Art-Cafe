@@ -28,7 +28,11 @@ export default function Contact() {
   };
 
   return (
-    <main style={{ paddingBottom: '6rem' }}>
+    <main style={{ paddingBottom: '6rem', position: 'relative' }}>
+      {/* Decorative background coffee rings */}
+      <div className="coffee-ring" style={{ top: '10%', right: '-80px', transform: 'scale(1.1) rotate(-20deg)' }}></div>
+      <div className="coffee-ring" style={{ top: '50%', left: '-100px', transform: 'scale(1.0) rotate(45deg)' }}></div>
+
       {/* Header */}
       <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
