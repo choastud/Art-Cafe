@@ -56,7 +56,7 @@ export default function Hiring() {
   return (
     <main style={{ paddingBottom: '6rem' }}>
       {/* Header */}
-      <section className="section" style={{ paddingTop: '4rem', paddingBottom: '3rem' }}>
+      <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -64,10 +64,10 @@ export default function Hiring() {
             transition={{ duration: 0.6 }}
           >
             <span className="handwritten" style={{ fontSize: '1.6rem' }}>Join the Studio</span>
-            <h1 style={{ fontSize: '3.5rem', marginTop: '0.5rem', marginBottom: '1.2rem', fontFamily: 'var(--font-serif)' }}>
-              Work With Us
+            <h1>
+              Work With <span>Us</span>
             </h1>
-            <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)' }}>
+            <p>
               We believe in warm atmospheres, specialty coffee expertise, and creative expression. If you love painting, brewing, or building community, let's create together.
             </p>
           </motion.div>

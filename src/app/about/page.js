@@ -9,7 +9,7 @@ export default function About() {
   return (
     <main style={{ paddingBottom: '5rem' }}>
       {/* Editorial Header */}
-      <section className="section" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
+      <section className="page-hero">
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -17,10 +17,10 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <span className="handwritten" style={{ fontSize: '1.6rem' }}>Our Chronicle</span>
-            <h1 style={{ fontSize: '3.5rem', marginTop: '0.5rem', marginBottom: '1.5rem', fontFamily: 'var(--font-serif)' }}>
-              Where Coffee Meets Canvas
+            <h1>
+              Where Coffee Meets <span>Canvas</span>
             </h1>
-            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
+            <p>
               Brew & Brush was founded on a rainy morning with a simple sketch and a steaming latte. We wanted to build a sanctuary where coffee isn't rushed, and canvases are never empty.
             </p>
           </motion.div>

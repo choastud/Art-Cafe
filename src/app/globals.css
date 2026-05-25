@@ -42,6 +42,10 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
+  background-image: radial-gradient(rgba(111, 78, 55, 0.04) 1px, transparent 0),
+                    radial-gradient(rgba(111, 78, 55, 0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
   color: var(--text-primary);
   overflow-x: hidden;
   line-height: 1.6;
